@@ -1,0 +1,176 @@
+        c.execute(f"insert into teaching1 values('{full_name.text}','{email_id.text}','{phone_no.text}','{password.text}','{jdate.text}','{spinner_id1.text}','{spinner_id2.text}','{spinner_id3.text}','{spinner_id4.text}')")
+        c.execute(f"insert into non_teaching values('{full_name.text}','{email_id.text}','{phone_no.text}','{password.text}','{jdate.text}','{spinner_id1.text}','{spinner_id2.text}','{spinner_id3.text}','{spinner_id4.text}')")
+
+                #primary table for teaching employees
+        c.execute("""CREATE TABLE if not exists teaching_1(Employee_ID INT,Name VARCHAR(100),email_ID VARCHAR(100) ,Phone_Number NUMERIC(14) PRIMARY KEY,password VARCHAR(20),Joining_Date DATE,Post VARCHAR(30),Gender VARCHAR(10) ,Department VARCHAR(30),Designation VARCHAR(30))""")
+
+        #primary table for teaching employees
+        c.execute("""CREATE TABLE if not exists non_teaching_2(Employee_ID INT,Name VARCHAR(100),email_ID VARCHAR(100) ,Phone_Number NUMERIC(14) PRIMARY KEY,password VARCHAR(20),Joining_Date DATE,Post VARCHAR(30),Gender VARCHAR(10) ,Department VARCHAR(30),Designation VARCHAR(30))""")
+
+                    Spinner:
+                        id: spinner_id1
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Employee Type"
+                        values: ["Admin", "Teaching", "Non-Teaching" ]
+
+                    Spinner:
+                        id: spinner_id2
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Gender"
+                        values: ["Male", "Female", "Others" ]
+
+                    Spinner:
+                        id: spinner_id3
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Department"
+                        values: ["Science", "Arts", "Commerce"]
+
+                    Spinner:
+                        id: spinner_id4
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Designation"
+                        values: ["HOD", "something1", "something2"]
+
+                        c.execute(f"insert into leave_balance values(%s,0,0,0,0,0,0,0,%s)", (row[0], row[5]))
+                        c.execute(f"insert into leave_balance values(%s,0,0,0,0,0,0,0,%s)",(row[0],row[5]))
+                        c.execute(f"insert into leave_balance values(%s,0,0,0,0,0,0,0,%s)", (row[0], row[5]))
+                         c.execute(f"INSERT INTO Teaching_leave_record VALUES('{empid}','{name}','{leave_types}','{emp_type}','{fdate}','{tdate}','{reason}')")
+                                 elif emp_type == "Non-Teaching Employee":
+            c.execute(f"INSERT INTO Non_Teaching_leave_record VALUES('{empid}','{name}','{leave_types}','{emp_type}','{fdate}','{tdate}','{reason}')")
+                    if emp_type == "Teaching Employee":
+            if leave_types == "Casual Leave":
+                c.execute("SELECT Casual_Leave FROM leave_balance WHERE Employee_ID=%s",(empid,))
+                  l = 'leave_balance'
+        c.execute("SELECT Casual_Leave FROM {} WHERE Employee_ID = %s".format(l), (empid,))
+        row = c.fetchone()
+        print(row[0])
+        Suman
+        62441
+        2023-05-06
+        2023-05-09
+        fever
+
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="12345",
+            database="test_db"
+        )
+        c = mydb.cursor()
+        c.execute(f"insert into notice values(%s,'Your leave has been santioned')", (empid,))
+        mydb.commit()
+        mydb.close()
+                    else:
+                query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+                c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+
+
+
+
+
+
+
+        elif leave_types == "Earned Leave":
+            c.execute("SELECT Earned_Leave FROM leave_balance WHERE Employee_ID=%s", (empid,))
+            row = c.fetchone()
+            if (to_date_object - from_date_object).days > row[0]:
+                dialog = MDDialog(
+                    title='Warning',
+                    text=f"You have {row[0]} Earned Leaves only"
+                )
+                dialog.open()
+            else:
+                query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+                c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+        elif leave_types == "Child Care Leave":
+            c.execute("SELECT Gender FROM {} WHERE Employee_ID = %s".format(n), (empid,))
+            row = c.fetchone()
+            if row[0] == "Male":
+                dialog = MDDialog(
+                    title='Warning',
+                    text=f"Only female employees can apply for CCL"
+                )
+                dialog.open()
+            if row[0] == "Female":
+                sm.current = 'certificate'
+        elif leave_types == "Medical Leave":
+            if emp_type == "Teaching Employee":
+                dialog = MDDialog(
+                    title='Warning',
+                    text=f"Only non-teaching employees can apply for Medical Leave"
+                )
+                dialog.open()
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+        elif leave_types == "Maternity Leave":
+            c.execute("SELECT Gender FROM {} WHERE Employee_ID = %s".format(n), (empid,))
+            row = c.fetchone()
+            if row[0] == "Male":
+                dialog = MDDialog(
+                    title='Warning',
+                    text=f"Only female employees can apply for Maternity Leave"
+                )
+                dialog.open()
+            else:
+                query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+                c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+        elif leave_types == "Duty Leave":
+            query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+            c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+        elif leave_types == "Others":
+            query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+            c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+        elif leave_types == "Special Leave":
+            if (to_date_object - from_date_object).days > 547:
+                dialog = MDDialog(
+                    title='Warning',
+                    text=f"You can't take Special Leave more than 547 days or 18 months"
+                )
+                dialog.open()
+            else:
+                query = "INSERT INTO {} VALUES (%s,%s, %s, %s, %s, %s, %s)".format(l)
+                c.execute(query, (empid, name, leave_types, emp_type, fdate, tdate, reason))
+            det = sm.get_screen('login')
+            e = det.ids.login_as.text
+            if e == "Teaching Employee":
+                sm.current = 'teaching_dashboard'
+            elif e == "Non-Teaching Employee":
+                sm.current = 'non_teaching_dashboard'
+                c.execute("SELECT Sentence FROM notice WHERE Employee_ID = %s",(emp,))
+            row = c.fetchone()

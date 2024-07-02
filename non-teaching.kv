@@ -1,0 +1,24 @@
+MDScreen:
+    name:"non-teaching"
+    MDCard:
+        orientation: "vertical"
+        padding: "8dp"
+        size_hint: None, None
+        size: "220dp", "180dp"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing: 12
+
+        MDRoundFlatButton:
+            text: 'Leave Request'
+            pos_hint: {'center_x': 0.515, 'center_y': 0.5}
+            on_press: root.manager.current = 'Leave_request'
+
+        MDRoundFlatButton:
+            text: 'View/Edit leave requests'
+            on_press: root.manager.current = 'teacher'
+        MDRoundFlatButton:
+            text: 'View Leave Balance'
+            pos_hint: {'center_x': 0.55, 'center_y': 0.5}
+            on_press: root.manager.current = 'faculty'

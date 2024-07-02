@@ -1,0 +1,36 @@
+<MyScreenManager>:
+    MainScreen:
+        name: "main"
+    ResultScreen:
+        name: "result"
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            id: value_label
+            text: "Value: "
+            font_size: "24sp"
+            halign: "center"
+        Label:
+            id: last_updated_label
+            text: "Last updated: "
+            font_size: "16sp"
+            halign: "center"
+        MDRectangleFlatButton:
+            text: "Update Value"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            on_press: root.update_value()
+
+<ResultScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            id: result_label
+            text: "Result: "
+            font_size: "24sp"
+            halign: "center"
+        MDRectangleFlatButton:
+            text: "Go Back"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            on_press: root.manager.current = "main"

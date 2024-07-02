@@ -1,0 +1,150 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    name:"admin_dashboard"
+    md_bg_color: 194/255, 216/255, 255/255,1
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+
+                MDTopAppBar:
+                    title:"Admin Dashboard"
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+
+                MDBoxLayout:
+                    pos_hint : {"center_x":0.5,"center_y": 0.75}
+                    orientation:"vertical"
+                    md_bg_color:(0,0,0,1)
+                    size_hint:None,None
+                    size:"100dp","100dp"
+                    AsyncImage:
+                        id: my_image
+                        source: ''
+                        size_hint_x: None
+                        width: self.parent.height
+
+
+
+                MDIconButton:
+                    icon:"image-edit-outline"
+                    pos_hint : {"center_x":0.70,"center_y": 0.68}
+                    text:"upload profile picture"
+                    on_press:app.open_file_mana()
+
+                MDLabel:
+                    text : "Name           :"
+                    font_size : "18sp"
+                    font_name : "Poppins Bold Italic 700.ttf"
+                    pos_hint : {"center_x":0.55,"center_y": 0.55}
+                    color: rgba(0,0,72, 255)
+
+                MDLabel:
+                    id: name
+                    text:" name "
+                    pos_hint:{"center_x":0.98,"center_y":0.55}
+                MDLabel:
+                    text : "Employee ID :"
+                    font_size : "16sp"
+                    font_name : "Poppins Bold Italic 700.ttf"
+                    pos_hint : {"center_x":0.54,"center_y": 0.45}
+                    color: rgba(0,0,72, 255)
+
+                MDLabel:
+                    id: empid
+                    text:" emp "
+                    pos_hint:{"center_x":0.98,"center_y":0.45}
+                MDLabel:
+                    text : "Email             :"
+                    font_size : "18sp"
+                    font_name : "Poppins Bold Italic 700.ttf"
+                    pos_hint : {"center_x":0.55,"center_y": 0.35}
+                    color: rgba(0,0,72, 255)
+
+                MDLabel:
+                    id: email
+                    text:" email "
+                    pos_hint:{"center_x":0.98,"center_y":0.35}
+
+                MDLabel:
+                    text : "Phone No.    :"
+                    font_size : "18sp"
+                    font_name : "Poppins Bold Italic 700.ttf"
+                    pos_hint : {"center_x":0.55,"center_y": 0.25}
+                    color: rgba(0,0,72, 255)
+
+                MDLabel:
+                    id: phone
+                    text:" text "
+                    pos_hint:{"center_x":0.98,"center_y":0.25}
+                MDLabel:
+                    text : "Joining Date :"
+                    font_size : "18sp"
+                    font_name : "Poppins Bold Italic 700.ttf"
+                    pos_hint : {"center_x":0.55,"center_y": 0.15}
+                    color: rgba(0,0,72, 255)
+
+                MDLabel:
+                    id: jdate
+                    text:" text "
+                    pos_hint:{"center_x":0.98,"center_y":0.15}
+
+
+
+
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            md_bg_color: 41/255, 255/255, 255/255,1
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    id:admin
+                    title:"Employee Name"
+                    text:"Employee ID"
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+
+                DrawerClickableItem:
+                    icon:"account-plus-outline"
+                    text:"Add Employee"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:
+                        root.manager.current = 'emp_list'
+                        app.on_click_show_list()
+
+                DrawerClickableItem:
+                    icon:"email-fast-outline"
+                    text:"Requests"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:
+                        app.on_click_teaching_leave_list()
+                        app.on_click_non_teaching_leave_list()
+                        root.manager.current = 'leave_list'
+
+                DrawerClickableItem:
+                    icon:"card-account-details-star-outline"
+                    text:"Details"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:
+                        app.on_click_show_list_of_all_employees()
+                        root.manager.current = 'emp_list'
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"account-edit"
+                    text:"Edit profile"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:
+                        app.show_update_profile()
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Log-out"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:root.manager.current='signup'
+
+
+

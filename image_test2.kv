@@ -1,0 +1,9 @@
+MDScreen:
+    name:"newscr"
+    FileChooserListView:
+        on_selection: root.selected(self.selection)
+
+BoxLayout:
+    Button:
+        text: 'Open Image Chooser'
+        on_release: app.open_image_chooser()

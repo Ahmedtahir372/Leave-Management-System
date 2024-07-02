@@ -1,0 +1,24 @@
+MDScreen:
+    name:"admin"
+    MDCard:
+        orientation:"vertical"
+        padding:"8dp"
+        size_hint:None,None
+        size:"180dp", "180dp"
+        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing:12
+
+        MDRoundFlatButton:
+            text: 'Employee Information'
+            pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+            on_press: root.manager.current = 'A3a'
+
+        MDRoundFlatButton:
+            text: 'Leave Requests'
+            on_press: root.manager.current = 'A3b'
+        MDRoundFlatButton:
+            text: 'Add Employee'
+            pos_hint:{'center_x': 0.51, 'center_y': 0.5}
+            on_press: root.manager.current = 'A3c'

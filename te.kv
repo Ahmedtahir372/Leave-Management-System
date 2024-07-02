@@ -1,0 +1,148 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    name:"teaching_Leave_request"
+    md_bg_color: 194/255, 216/255, 255/255,1
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title:"LEAVE SYSTEM APP"
+
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+                MDBoxLayout:
+
+                    size_hint:0.5,0.5
+                    orientation:"vertical"
+
+
+                    pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+                    padding: 5
+                    spacing: 5
+                    MDLabel:
+                        text:"Leave Type :"
+                        font_name : "Poppins Medium 500.ttf"
+                        color: rgba(0,0,72, 255)
+
+                    Spinner:
+                        id:leave_types
+                        text:"Select"
+                        values:["Casual Leave","Medical Leave","Earned Leave","Child Care Leave","Maternity Leave","Duty Leave","Sick Leave","Others"]
+                        background_color: "blue"
+
+
+                        font_size: "18dp"
+                    MDLabel:
+                        text: "From :"
+                        font_name : "Poppins Medium 500.ttf"
+                        color: rgba(0,0,72, 255)
+                    MDTextField:
+                        id:fdate
+                        markup: True
+                        hint_text: "YYYY-MM-DD"
+
+                        helper_text_mode: "persistent"
+                        mode: "round"
+
+                        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                        size_hint: (1, None)
+                        height: 300
+
+
+                    MDLabel:
+                        text: "To :"
+                        font_name : "Poppins Medium 500.ttf"
+                        color: rgba(0,0,72, 255)
+                    MDTextField:
+                        id:tdate
+                        markup: True
+                        hint_text: "YYYY-MM-DD"
+                        helper_text_mode: "persistent"
+                        mode: "round"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDLabel:
+                        text: "Reason :"
+                        font_size : "18sp"
+                        color: rgba(0,0,72, 255)
+
+                        font_name : "Poppins Medium 500.ttf"
+
+
+                MDTextField:
+                    id:reason
+                    markup: True
+                    hint_text: "Write your reason..."
+                    font_name : "Poppins Medium 500.ttf"
+                    font_size:"13dp"
+                    helper_text_mode: "persistent"
+                    mode: "rectangle"
+
+                    size_hint: 0.86,0.17
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.19}
+
+                MDIconButton:
+                    icon : "arrow-left"
+                    pos_hint :{"center_x": 0.1, "center_y": 0.8}
+                    user_font_size: "30sp"
+                    theme_text_color: "Custom"
+                    text_color : rgba(26, 24, 58, 255)
+                    on_release:
+                        root.manager.transition.direction = 'right'
+                        root.manager.current = 'mainscreen'
+
+                MDFillRoundFlatButton:
+                    text: "Send Request"
+                    size_hint: 0.3,0.05
+                    md_bg_color: "green"
+                    pos_hint :{"center_x": 0.5, "center_y": 0.06}
+                    on_press:
+
+
+
+
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            md_bg_color: 41/255, 240/255, 255/255,1
+
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    title:"LEAVE SYSTEM APP"
+                    text:"Employee Name"
+
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Leave Request"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:root.manager.current = 'leave_request'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Edit Leave Request"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    on_press:root.manager.current = 'view_edit'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    text:"Show Leave Balance"
+                    on_press:root.manager.current = 'view_leave_balance'
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"send"
+                    md_bg_color: 41/255, 255/255, 255/255,1
+                    text:"Log-out"
+
+

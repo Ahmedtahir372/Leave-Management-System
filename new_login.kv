@@ -1,0 +1,116 @@
+MDScreen:
+    name:"login"
+    line_color: 0, 0, 1, 1
+    md_bg_color: 0/255, 51/255, 102/255,1
+
+    MDLabel:
+        text : "Login"
+        font_size : "30sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.16,"center_y": 0.77}
+        halign : "center"
+        color: rgba(255, 165, 0)
+
+    MDLabel:
+        text : "Please sign in to continue..."
+        font_size : "14sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.34,"center_y": 0.71}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    MDLabel:
+        text : "Email ID :"
+        font_size : "14sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.17,"center_y": 0.63}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    MDTextField:
+        id: email_phn
+        markup: True
+        hint_text: "Email ID or Phone number"
+        icon_right : "account"
+        color_mode: "Custom"
+        current_hint_text_color :1, 1, 1, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.57}
+        size_hint_x : None
+        width : 250
+        line_color_normal: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+        line_color_focus: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+        text_color: (1, 1, 1, 1)  # Light text color (RGB: 255, 255, 255)
+        helper_text_color: (0, 0, 0, 1)  if self.focus else (255, 255, 255, 1)
+    MDLabel:
+        text : "Password* :"
+        password: "true"
+        font_size : "14sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.19,"center_y": 0.47}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    MDTextField:
+        id: password
+        password: True
+        hint_text: "Password*"
+
+        helper_text_mode: "on_focus"
+
+        icon_right : "eye-off"
+        pos_hint: {"center_x": 0.5, "center_y": 0.41}
+        size_hint_x : None
+        width : 250
+        line_color_normal: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+        line_color_focus: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+        text_color: (1, 1, 1, 1)  # Light text color (RGB: 255, 255, 255)
+        helper_text_color: (0, 0, 0, 1)  if self.focus else (255, 255, 255, 1)
+    MDLabel:
+        text : "Login as :"
+        font_size : "14sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.16,"center_y": 0.30}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    Spinner:
+        id: login_as
+        size_hint: None, None
+        size: dp(190), dp(30)
+        text: "Select"
+        background_color: "blue"
+        pos_hint: {"center_x": 0.50, "center_y": 0.24}
+        font_size: "18dp"
+        values: ["Admin", "Teaching Employee", "Non-Teaching Employee"]
+    MDFillRoundFlatButton:
+        text: "Login"
+        pos_hint: {"center_x": 0.5, "center_y": 0.16}
+        size_hint: 0.4,0.00
+        md_bg_color: "orangered"
+        on_release:
+            app.check_login(email_phn,login_as.text,password.text)
+
+            app.show_dp()
+
+    MDLabel:
+        text : "New user ->"
+        font_size : "13sp"
+        font_name : "Poppins Bold Italic 700.ttf"
+        pos_hint : {"center_x":0.40,"center_y": 0.03}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    MDLabel:
+        text : "---------------------------------------- OR -----------------------------------------"
+        font_size : "12sp"
+
+        pos_hint : {"center_x":0.50,"center_y": 0.06}
+        halign : "center"
+        color: rgba(255, 255, 255)
+    MDTextButton:
+        text: "sign up"
+        theme_text_color: "Custom"
+        color: rgba(255, 165, 0)
+        pos_hint : {"center_x":0.64,"center_y": 0.03}
+        on_press: root.manager.current = "signup"
+    MDTextButton:
+        text: "Forget password ?"
+        theme_text_color: "Custom"
+        color: rgba(255, 165, 0)
+        font_size : "13sp"
+        pos_hint : {"center_x":0.50,"center_y": 0.10}

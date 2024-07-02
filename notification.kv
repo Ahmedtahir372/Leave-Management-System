@@ -1,0 +1,54 @@
+MDScreen:
+    name: "notification"
+    MDFloatLayout:
+
+        MDIconButton:
+            icon : "arrow-left"
+            pos_hint : {"center_y" :0.95}
+            user_font_size: "30sp"        #back arrow
+            text_color : rgba(26, 24, 58, 255)
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'selection'
+
+        MDIconButton:
+            icon : "refresh"
+            pos_hint : {"center_x" :0.8,"center_y":0.9}
+            user_font_size: "30sp"   #Refresh button
+            theme_text_color: "Custom"
+            text_color : rgba(26, 24, 58, 255)
+            #on_release:
+            #    root.manager.transition.direction = 'right'
+             #   root.manager.current = 'selection'
+
+        MDLabel:
+            size_hint: (1, None)
+            pos_hint :{"center_x": 0.51, "center_y": 0.9}
+            color: rgba(0,0,200,255)
+            markup: True
+            text: "[size=25]Add Employees[/size]"
+            md_bg_color: 1, 1, 1, .1
+            radius:[12,12,12,12]
+
+
+
+
+        MDScrollView:
+            md_bg_color: 1, 1, 1, .1
+            size_hint:(1,0.85)
+            line_color: 0, 0, 1, 1
+            radius: [12,12,20,20]
+            MDList:
+                OneLineAvatarIconListItem:
+                    text: "Joydeep Roy"
+                    IconLeftWidget:
+                        icon: "account"
+                        on_press:root.manager.current="add_employee"
+
+
+
+
+
+
+
+

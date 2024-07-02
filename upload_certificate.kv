@@ -1,0 +1,21 @@
+MDScreen:
+    name:"certificate"
+    MDGridLayout:
+        cols:1
+        size_hint: 3.5,2
+        pos_hint: {"center_x":1,"center_y":0.52}
+        Image:
+            source: "pexels-codioful-(formerly-gradienta)-7130498.jpg"
+    BoxLayout:
+        orientation: 'vertical'
+        AsyncImage:
+            id: my_image
+            source: ''
+
+        MDFlatButton:
+            text: "Upload your child's Birth Certificate"
+            on_release: app.open_file_manager()
+
+        MDFlatButton:
+            text: 'Done'
+            on_release: app.goback()

@@ -1,0 +1,223 @@
+MDScreen:
+    name: "signup"
+    MDFloatLayout:
+        #md_bg_color: 204/255, 255/255, 255/255,1
+        MDLabel:
+            text : "Registration"
+            font_size : "20sp"
+            font_name : "Poppins Bold 700.ttf"
+            pos_hint : {"center_x":0.26,"center_y": 0.92}
+            halign : "center"
+            color: rgba( 32 ,32 , 32)
+        MDLabel:
+            text : "Fill out the form carefully"
+            font_size : "14sp"
+            pos_hint : {"center_x":0.55,"center_y": 0.88}
+            color: rgba(96,96, 96)
+
+        MDLabel:
+            text : "Name*            "
+            font_size : "15sp"
+            font_name : "Poppins Bold 700.ttf"
+            pos_hint : {"center_x":0.55,"center_y": 0.8}
+            color: rgba(0,0,72, 255)
+
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.8}
+            MDTextField:
+                id: full_name
+                hint_text: "Full name"
+                icon_left : "account"
+                mode: "round"
+                font_size:"12dp"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.5}
+                size_hint_x : None
+                width : 175
+
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.7}
+            MDTextField:
+                id: Email
+                hint_text: "abc@gmail.com"
+                icon_left : "email"
+                mode: "round"
+                font_size:"12dp"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.54}
+                size_hint_x : None
+                width : 175
+
+            MDLabel:
+                text : "email_id              "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"center_x":0.12,"center_y": 0.54}
+                color: rgba(0,0,72, 255)
+            MDLabel:
+                text : "Phone No.    "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"center_x":0.12,"center_y": 0.44}
+                color: rgba(0,0,72, 255)
+
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.7}
+
+            MDTextField:
+                id: phone_no
+                hint_text: "Phone Number"
+                mode: "round"
+
+                helper_text_mode: "on_focus"
+
+
+                font_size:"12dp"
+                icon_left : "phone"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.44}
+                size_hint_x : None
+                width : 175
+            MDLabel:
+                text : "Password*     "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"center_x":0.12,"center_y": 0.34}
+                color: rgba(0,0,72, 255)
+
+
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.7}
+            MDTextField:
+                id: jdate
+                hint_text: "Y  / M  /  D"
+                icon_left : "clock"
+                mode: "round"
+                font_size:"12dp"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.22}
+                size_hint_x : None
+                width : 175
+            MDLabel:
+                text : "Department "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"right": 0.61,"top": 0.61}
+                color: rgba(0,0,72, 255)
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.61}
+            MDTextField:
+                id: date
+                hint_text: "Department"
+                icon_left : "home"
+                mode: "round"
+                font_size:"12dp"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.24}
+                size_hint_x : None
+                width : 175
+            MDLabel:
+                text : "Designation "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"right": 0.61,"top": 0.63}
+                color: rgba(0,0,72, 255)
+        MDFloatLayout:
+            size_hint: 0.7, 0.7
+            pos_hint: {"center_x":0.67, "center_y":0.51}
+            MDTextField:
+                id: date
+                hint_text: "Designation"
+                icon_left : "account-tie"
+                mode: "round"
+                font_size:"12dp"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.27}
+                size_hint_x: None
+                width : 175
+
+
+
+            MDRaisedButton:
+                text: " Create Account "
+                size_hint: 0.7,0.04
+                md_bg_color: "navy"
+                pos_hint : {"right": 0.60,"top": 0.00}
+                on_press:
+                    app.signup(full_name,email_id,phone_no,password,jdate,spinner_id1,spinner_id2,spinner_id3,spinner_id4)
+                    root.manager.transition.direction = "left"
+
+
+
+            MDLabel:
+                text : "Joining Date "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"right": 0.59,"top": 0.99}
+                color: rgba(0,0,72, 255)
+            MDTextField:
+                id: Phone
+                hint_text: "password*"
+                password: "true"
+                mode: "round"
+
+                font_size:"12dp"
+                icon_left : "lock"
+                icon_left_color : app.theme_cls.primary_color
+                pos_hint : {'center_x': 0.54, 'center_y': 0.61}
+                size_hint_x : None
+                width : 175
+            Spinner:
+                id: login_as
+                size_hint: None, None
+                size: dp(150), dp(30)
+                text: "Select"
+                background_color: "darkcyan"
+                pos_hint: {"center_x": 0.59, "center_y": 0.16}
+                font_size: "18dp"
+                values: ["Male", "Female",]
+            MDLabel:
+                text : "Gender "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"right": 0.61,"top": 0.67}
+                color: rgba(0,0,72, 255)
+            Spinner:
+                id: login_as
+                size_hint: None, None
+                size: dp(150), dp(30)
+                text: "Select"
+                background_color: "darkcyan"
+                pos_hint: {"center_x": 0.59, "center_y": 0.07}
+                font_size: "18dp"
+                values: ["Admin", "Teaching Employee", "Non-Teaching Employee"]
+            MDLabel:
+                text : "Employee type "
+                font_size : "15sp"
+                font_name : "Poppins Bold 700.ttf"
+                pos_hint : {"right": 0.61,"top": 0.57}
+                color: rgba(0,0,72, 255)
+            MDLabel:
+                text : "-------------------------------OR------------------------------- "
+                font_size : "12sp"
+
+                pos_hint : {"right": 0.80,"top": 0.37}
+                color: rgba(0,0,72, 255)
+            MDLabel:
+                text : "Already have an account ?"
+                font_size : "13sp"
+
+                pos_hint : {"right": 0.80,"top": 0.32}
+                color: rgba(0,0,72, 255)
+        MDTextButton:
+            text : "Login"
+            font_size : "14sp"
+            font_name : "Poppins Bold 700.ttf"
+            pos_hint : {"right": 0.80,"top": 0.05}
+            color: rgba(0,102, 51)
+            on_press: root.manager.current='login'

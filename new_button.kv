@@ -1,0 +1,19 @@
+MDScreen:
+    name:"img_test"
+    BoxLayout:
+        orientation: "vertical"
+        size:root.width,root.height
+        padding:50
+        spacing:20
+
+        GridLayout:
+            id: grid
+            cols: 2
+            spacing: "10dp"
+
+        MDFlatButton:
+            id: filechooser
+            text: "press"
+            on_press: app.now_view()
+
+

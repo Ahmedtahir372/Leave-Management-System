@@ -1,0 +1,66 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    name:"admin_dashboard"
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title:"Admin Dashboard"
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+
+                MDScreen:
+                    name:"admin_dash"
+
+
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    id:admin
+                    title:"Employee Name"
+                    text:"Employee ID"
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Add Employee"
+                    on_press:
+                        root.manager.current = 'emp_list'
+                        app.on_click_show_list()
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Requests"
+                    on_press:
+                        app.on_click_teaching_leave_list()
+                        app.on_click_non_teaching_leave_list()
+                        root.manager.current = 'leave_list'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Details"
+                    on_press:
+                        app.on_click_show_list_of_all_employees()
+                        root.manager.current = 'emp_list'
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Edit profile"
+                    on_press:
+                        app.show_update_profile()
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Log-out"
+                    on_press:root.manager.current='signup'
+
+
+

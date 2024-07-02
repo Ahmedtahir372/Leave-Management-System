@@ -1,0 +1,85 @@
+MDScreen:
+    name:"view_leave_balance"
+    MDGridLayout:
+        cols:1
+        size_hint: 5,5
+        pos_hint: {"center_x":1,"center_y":0.65}
+        Image:
+            source: "pexels-codioful-(formerly-gradienta)-7130498.jpg"
+
+    MDIconButton:
+        icon : "arrow-left"
+        pos_hint :{"center_x": 0.1, "center_y": 0.9}
+        user_font_size: "30sp"
+        theme_text_color: "Custom"
+        text_color : rgba(26, 24, 58, 255)
+        on_release:
+            app.goback()
+    MDBoxLayout:
+
+        size_hint:0.7,0.5
+        orientation:"vertical"
+
+
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+        padding: 5
+        spacing: 5
+        MDLabel:
+            text:"Calculate Your Leave Balance"
+        MDLabel:
+            text: "Monthly Salary"
+
+        MDTextField:
+            id:salary
+            markup: True
+            hint_text: "Your monthly salary"
+            helper_text_mode: "persistent"
+            mode: "rectangle"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            size_hint: (1, None)
+            height: 300
+
+
+
+
+        MDLabel:
+            text: "From"
+
+        MDTextField:
+            id:cfdate
+            markup: True
+            hint_text: "YYYY-MM-DD"
+            helper_text_mode: "persistent"
+            mode: "round"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            size_hint: (1, None)
+            height: 300
+
+        MDLabel:
+            text: "To"
+
+        MDTextField:
+            id:ctdate
+            markup: True
+            hint_text: "YYYY-MM-DD"
+            helper_text_mode: "persistent"
+            mode: "round"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            size_hint: (1, None)
+            height: 300
+
+
+
+        MDLabel:
+            text: "Leave Balance:"
+        MDLabel:
+            text: ""
+
+
+
+
+
+
+
+
+

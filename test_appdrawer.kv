@@ -1,0 +1,46 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    name:"mainscreen"
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title:"Admin Dashboard"
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    title:"LEAVE SYSTEM APP"
+                    text:"Employee Name"
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Leave Request"
+                    on_press:root.manager.current = 'leave_request'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Edit Leave Request"
+                    on_press:root.manager.current = 'view_edit'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Show Leave Balance"
+                    on_press:root.manager.current = 'view_leave_balance'
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Log-out"
+
+
+

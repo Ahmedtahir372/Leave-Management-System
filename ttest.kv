@@ -1,0 +1,45 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title:"LEAVE SYSTEM APP"
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+                    md_bg_color: app.theme_cls.accent_color
+        MDNavigationDrawer:
+            id:nav_drawer
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    title:"LEAVE SYSTEM APP"
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Add Employee"
+                    on_press:root.manager.current = 'add_employee'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Requests"
+                    on_press:root.manager.current = 'leave_requests'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Details"
+                    on_press:root.manager.current = 'employee_details'
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Log-out"
+
+
+

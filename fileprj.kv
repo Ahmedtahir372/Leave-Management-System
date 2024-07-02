@@ -1,0 +1,630 @@
+ScreenManager:
+    Screen_Register:
+    Screen_Home:
+    Screen_A:
+    Screen_B:
+    Screen_C:
+
+    Screen_A1:
+    Screen_B1:
+    Screen_C1:
+
+    Screen_A2:
+    Screen_B2:
+    Screen_C2:
+
+
+<Screen_Register>
+    name: "register"
+
+    
+    MDFloatLayout:
+
+        BoxLayout:
+            size_hint: (1, 1)
+            padding: 10
+            ScrollView:
+                bar_color: [0, 0, 255, 1]
+                bar_width: 2
+                BoxLayout:
+
+                    spacing: 15
+
+                    id: container
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDLabel:
+                        size_hint: (1, None)
+                        align:"center"
+                        pos_hint: {"center_x": 0.8, "center_y": 0.9}
+                        color: rgba(0, 0, 200, 255)
+                        markup: True
+                        text: "[size=25]SIGN UP[/size]"
+
+                    MDTextField:
+                        id: full_name
+                        markup: True
+                        hint_text: "Full name"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: email_id
+                        markup: True
+                        hint_text: "Email ID"
+
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: phone_no
+                        markup: True
+                        hint_text: "Phone Number"
+                        mode: "round"
+                        max_text_length: 10
+                        size_hint: (1, None)
+                        height: 300
+
+
+                    MDTextField:
+                        id: department
+                        markup: True
+                        hint_text:"Password"
+
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: password
+                        markup: True
+                        hint_text: "Joining Date"
+
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+
+
+
+                    Spinner:
+                        id: spinner_id1
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Employee Type"
+                        values: ["Admin", "Teaching", "Non-Teaching" ]
+
+                    Spinner:
+                        id: spinner_id1
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Gender"
+                        values: ["Male", "Female", "Others" ]
+
+                    Spinner:
+                        id: spinner_id2
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Department"
+                        values: ["Science", "Arts", "Commerce"]
+
+                    Spinner:
+                        id: spinner_id2
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Designation"
+                        values: ["HOD", "something1", "something2"]
+                   
+                    MDFillRoundFlatButton:
+                        text: "Sign Up"
+                        size_hint: 0.3, 0.05
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+
+                        on_release:
+
+                            root.manager.transition.direction = "left"
+                            root.manager.current = "Home"
+
+                    MDTextButton:
+                        text: "Or click here to Login"
+                        color: rgba(0, 0, 200, 255)
+                        font_size: "14sp"
+                        pos_hint: {"center_x": 0.49, "center_y": 0.04}
+                        on_press: root.manager.current = 'Home'
+
+
+
+
+
+<Screen_Home>
+    name: "Home"
+
+    MDCard:
+        orientation: "vertical"
+        padding: "8dp"
+        size_hint: None, None
+        size: "180dp", "180dp"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing: 12
+
+        MDGridLayout:
+            rows: 3
+            col: 1
+            pos_hint: {'center_x': 0.35, 'center_y': 0.9}
+            padding: 5
+            spacing: 20
+            MDRoundFlatButton:
+                text: 'Administrator'
+                pos_hint:{'center_x': 0.501,'center_y': 0.5}
+                on_press: root.manager.current = 'administrator'
+
+            MDRoundFlatButton:
+                text: 'Teaching Employee'
+                pos_hint:{'center_x': 0.5,'center_y': 0.5}
+                on_press: root.manager.current = 'teacher'
+            MDRoundFlatButton:
+                text: 'Non-Teaching Employee '
+                pos_hint:{'center_x': 0.5,'center_y': 0.5}
+                on_press: root.manager.current = 'faculty'
+
+
+
+
+<Screen_A>
+    name:"administrator"
+    MDLabel:
+        text:'Admin Login'
+        pos_hint:{'center_x': 0.5, 'center_y': 0.8}
+    MDCard:
+        orientation:"vertical"
+        padding:"8dp"
+        size_hint:None,None
+        size:"250dp", "140dp"
+        pos_hint:{'center_x': 0.5, 'center_y': 0.4}
+        elevation: 5
+        padding: 25
+        spacing:22
+        MDTextField:
+            id: full_name
+            markup: True
+            hint_text: "Email or phone number"
+
+            mode: "round"
+            pos_hint:{"center_x":0.5,"center_y":0.4}
+            size_hint: (1, None)
+            height: 300
+
+        MDTextField:
+            id: full_name
+            markup: True
+            hint_text: "Password"
+            helper_text: "Use a strong password"
+            helper_text_mode: "persistent"
+            mode: "round"
+            pos_hint:{"center_x":0.5,"center_y":0.3}
+            size_hint: (1, None)
+            height: 300
+
+    MDFillRoundFlatButton:
+        text: "SUBMIT"
+        size_hint: 0.3,0.05
+        pos_hint : {"center_x":0.5,"center_y":0.2}
+        on_press:root.manager.current='admin_1'
+
+
+<Screen_B>
+    name:"teacher"
+    MDLabel:
+        text:'Teacher'
+    MDTextField:
+        id: full_name
+        markup: True
+        hint_text: "Email or phone number"
+        helper_text: "Enter the email or phone number"
+        helper_text_mode: "persistent"
+        mode: "round"
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        size_hint: (1, None)
+        height: 300
+
+    MDTextField:
+        id: full_name
+        markup: True
+        hint_text: "Password"
+        helper_text: "Use a strong password"
+        helper_text_mode: "persistent"
+        mode: "round"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        size_hint: (1, None)
+        height: 300
+
+    MDFillRoundFlatButton:
+        text: "SUBMIT"
+        size_hint: 0.3, 0.05
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        on_press:root.manager.current='teacher_1'
+
+
+<Screen_C>
+    name:"faculty"
+    MDLabel:
+        text: 'faculty'
+    MDCard:
+        MDTextField:
+            id: full_name
+            markup: True
+            hint_text: "Email or phone number"
+            helper_text: "Enter the email or phone number"
+            helper_text_mode: "persistent"
+            mode: "round"
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            size_hint: (1, None)
+            height: 300
+
+        MDTextField:
+            id: full_name
+            markup: True
+            hint_text: "Password"
+            helper_text: "Use a strong password"
+            helper_text_mode: "persistent"
+            mode: "round"
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            size_hint: (1, None)
+            height: 300
+
+        MDFillRoundFlatButton:
+            text: "SUBMIT"
+            size_hint: 0.3, 0.05
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            on_press:root.manager.current='faculty_1'
+
+
+
+<Screen_A1>
+    name:"admin_1"
+    MDCard:
+        orientation:"vertical"
+        padding:"8dp"
+        size_hint:None,None
+        size:"180dp", "180dp"
+        pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing:12
+
+        MDRoundFlatButton:
+            text: 'Employee Information'
+            pos_hint:{'center_x': 0.5, 'center_y': 0.5}
+            on_press: root.manager.current = 'A3a'
+
+        MDRoundFlatButton:
+            text: 'Leave Requests'
+            on_press: root.manager.current = 'A3b'
+        MDRoundFlatButton:
+            text: 'Add Employee'
+            pos_hint:{'center_x': 0.51, 'center_y': 0.5}
+            on_press: root.manager.current = 'A3c'
+
+    MDFillRoundFlatButton:
+        text: 'Log out'
+        on_press: root.manager.current = 'Home'
+        pos_hint:{'center_x': 0.5, 'center_y': 0.1}
+
+
+
+
+<Screen_B1>
+    name:"teacher_1"
+    MDCard:
+        orientation: "vertical"
+        padding: "8dp"
+        size_hint: None, None
+        size: "220dp", "180dp"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing: 12
+
+        MDRoundFlatButton:
+            text: 'Leave Request'
+            pos_hint: {'center_x': 0.515, 'center_y': 0.5}
+            on_press: root.manager.current = 'leave_types'
+
+        MDRoundFlatButton:
+            text: 'View/Edit leave requests'
+            on_press: root.manager.current = ''
+        MDRoundFlatButton:
+            text: 'View Leave Balance'
+            pos_hint: {'center_x': 0.55, 'center_y': 0.5}
+            on_press: root.manager.current = 'faculty'
+
+    MDFillRoundFlatButton:
+        text: 'Log out'
+        on_press: root.manager.current = 'Home'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+
+
+
+
+
+
+<Screen_C1>
+    name:"faculty_1"
+    MDCard:
+        orientation: "vertical"
+        padding: "8dp"
+        size_hint: None, None
+        size: "220dp", "180dp"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        elevation: 5
+        padding: 25
+        spacing: 12
+
+        MDRoundFlatButton:
+            text: 'Leave Request'
+            pos_hint: {'center_x': 0.515, 'center_y': 0.5}
+            on_press: root.manager.current = 'leave_types'
+
+        MDRoundFlatButton:
+            text: 'View/Edit leave requests'
+            on_press: root.manager.current = 'teacher'
+        MDRoundFlatButton:
+            text: 'View Leave Balance'
+            pos_hint: {'center_x': 0.55, 'center_y': 0.5}
+            on_press: root.manager.current = 'faculty'
+
+
+    MDFillRoundFlatButton:
+        text: 'Log out'
+        on_press: root.manager.current = 'Home'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+
+
+<Screen_A2>
+
+
+<Screen_B2>
+    name: "leave_types"
+    MDGridLayout:
+        rows:4
+        col:2
+        pos_hint: {'center_x': 0.55, 'center_y': 0.45}
+        padding: 5
+        spacing:20
+
+        MDCard:
+            id:"CL"
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+
+            MDLabel:
+                text:"Casual Leave"
+                halign:'center'
+            MDLabel:
+                text:"(CL)"
+                halign:'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Medical Leave"
+                halign:'center'
+            MDLabel:
+                text:"(ML)"
+                halign:'center'
+
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Earned Leave"
+                halign:'center'
+            MDLabel:
+                text:"(EL)"
+                halign:'center'
+
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Child Care Leave"
+                halign:'center'
+            MDLabel:
+                text:"(CCL)"
+                halign:'center'
+
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Maternity Leave"
+                halign:'center'
+            MDLabel:
+                text:"(ML)"
+                halign:'center'
+
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Duty Leave"
+                halign:'center'
+            MDLabel:
+                text:"(DL)"
+                halign:'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Special Leave"
+                halign:'center'
+            MDLabel:
+                text:"(SL)"
+                halign:'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text:"Other"
+                halign:'center'
+
+
+
+
+
+
+
+
+<Screen_C2>
+    name: "faculty_types"
+    MDGridLayout:
+        rows: 4
+        col: 2
+        pos_hint: {'center_x': 0.55, 'center_y': 0.45}
+        padding: 5
+        spacing: 20
+
+        MDCard:
+            id: "CL"
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+
+            MDLabel:
+                text: "Casual Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(CL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Sick Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(SL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Earned Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(EL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Privilege Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(PL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Maturity Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(ML)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Paternity Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(PL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Vacation Leave"
+                halign: 'center'
+            MDLabel:
+                text: "(VL)"
+                halign: 'center'
+
+        MDCard:
+            size_hint: None, None
+            size: "120dp", "100dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            elevation: 5
+            on_press: root.manager.current = 'administrator'
+            MDLabel:
+                text: "Other"
+                halign: 'center'
+

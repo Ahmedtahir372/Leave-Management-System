@@ -1,0 +1,130 @@
+MDScreen:
+    name: "signup"
+
+
+    MDFloatLayout:
+
+        BoxLayout:
+            size_hint: (1, 1)
+            padding: 10
+            ScrollView:
+                bar_color: [0, 0, 255, 1]
+                bar_width: 2
+                BoxLayout:
+
+                    spacing: 15
+
+                    id: container
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDLabel:
+                        size_hint: (1, None)
+                        align:"center"
+                        pos_hint: {"center_x": 0.8, "center_y": 0.9}
+                        color: rgba(0, 0, 200, 255)
+                        markup: True
+                        text: "[size=25]SIGN UP[/size]"
+
+                    MDTextField:
+                        id: full_name
+                        markup: True
+                        hint_text: "Full name"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: email_id
+                        markup: True
+                        hint_text: "Email ID"
+
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: phone_no
+                        markup: True
+                        hint_text: "Phone Number"
+                        mode: "round"
+                        max_text_length: 10
+                        size_hint: (1, None)
+                        height: 300
+
+
+                    MDTextField:
+                        id: password
+                        markup: True
+                        hint_text:"Password"
+
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: jdate
+                        markup: True
+                        hint_text: "Joining Date"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: spinner_id4
+                        markup: True
+                        hint_text: "Department"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    MDTextField:
+                        id: spinner_id3
+                        markup: True
+                        hint_text: "Designation"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+                    Spinner:
+                        id: spinner_id2
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Gender"
+                        values: ["Male", "Female", "Others" ]
+
+                    Spinner:
+                        id: spinner_id1
+                        size_hint:None,None
+                        size:dp(250),dp(40)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        text: "Select Employee Type"
+                        values: ["Admin", "Teaching", "Non-Teaching" ]
+
+
+
+
+
+
+
+
+
+                    MDFillRoundFlatButton:
+                        text: "Sign Up"
+                        size_hint: 0.3, 0.05
+                        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+
+                        on_release:
+
+                            app.signup(full_name,email_id,phone_no,password,jdate,spinner_id1,spinner_id2,spinner_id3,spinner_id4)
+                            root.manager.transition.direction = "left"
+
+
+                    MDTextButton:
+                        text: "Or click here to Login"
+                        color: rgba(0, 0, 200, 255)
+                        font_size: "14sp"
+                        pos_hint: {"center_x": 0.49, "center_y": 0.04}
+                        on_press: root.manager.current='login'

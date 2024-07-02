@@ -1,0 +1,63 @@
+MDScreen:
+    name:"login"
+    line_color: 0, 0, 1, 1
+    md_bg_color: (0/255, 146/255, 171/255, 1)
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "20dp"
+
+        MDLabel:
+            size_hint_y: None
+            height: "40dp"
+            color: (1, 1, 1, 1)  # Light text color (RGB: 255, 255, 255)
+            font_style: "H4"
+            text: "Login"
+
+        MDTextField:
+            id: email_phn
+            hint_text: "Phone number"
+            helper_text_mode: "on_focus"
+            mode: "rectangle"
+            line_color_normal: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+            line_color_focus: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+            text_color: (1, 1, 1, 1)  # Light text color (RGB: 255, 255, 255)
+            helper_text_color: (1, 1, 1, 1) if self.focus else (0.8, 0.8, 0.8, 1)
+
+        MDTextField:
+            id: password
+            hint_text: "Password"
+            helper_text_mode: "on_focus"
+            mode: "rectangle"
+            password: True
+            line_color_normal: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+            line_color_focus: (1, 1, 1, 1)  # Light line color (RGB: 255, 255, 255)
+            text_color: (1, 1, 1, 1)  # Light text color (RGB: 255, 255, 255)
+            helper_text_color: (1, 1, 1, 1) if self.focus else (0.8, 0.8, 0.8, 1)
+
+        Spinner:
+            id: login_as
+            size_hint: None, None
+            size: dp(300), dp(40)
+            text: "Login as"
+            pos_hint: {"center_x": 0.5}
+            values: ["Admin", "Teaching Employee", "Non-Teaching Employee"]
+
+
+        MDRaisedButton:
+            text: "Login"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            md_bg_color: (0.2, 0.2, 0.8, 1)
+            on_release:
+                app.check_login(email_phn,login_as.text,password.text)
+
+
+
+        MDTextButton:
+            text: "Or click here to Sign Up"
+            theme_text_color: "Custom"
+            text_color: (1, 1, 1, 1)  # Custom text color (RGB: 204, 51, 102)
+            pos_hint: {"center_x": 0.5}
+            on_press: root.manager.current = "signup"

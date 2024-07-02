@@ -1,0 +1,76 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+<DrawerLabelItem@MDNavigationDrawerItem>
+MDScreen:
+    name:"non_teaching_dashboard"
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title:"Non-Teaching Dashboard"
+                    elevation:4
+                    pos_hint:{"top":1}
+                    left_action_items:[['menu',lambda x:nav_drawer.set_state("open")]]
+
+
+                MDIconButton:
+                    icon : "arrow-left"
+                    pos_hint :{"center_x": 0.1, "center_y": 0.8}
+                    user_font_size: "30sp"
+                    theme_text_color: "Custom"
+                    text_color : rgba(26, 24, 58, 255)
+                    on_release:
+                        root.manager.transition.direction = 'right'
+                        root.manager.current = 'mainscreen'
+
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    id:non_tea
+                    title:"Employee Name"
+                    text:"Employee ID"
+                    spacing:"4dp"
+                    padding:"12dp",0,0,"32dp"
+                MDNavigationDrawerLabel:
+                    text:"Menu"
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Leave Request"
+                    on_press:show_edit_request()
+
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Edit Leave Request"
+                    on_press:root.manager.current = 'view_edit'
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Show Leave Balance"
+                    on_press:
+                        app.increment()
+                        app.employee_check_balance()
+
+                DrawerClickableItem:
+                    icon:"gmail"
+                    text:"Your notice"
+                    on_press:
+                        app.notice_list()
+
+                MDNavigationDrawerLabel:
+                    text:"other"
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Edit profile"
+                    on_press:app.show_update_profile()
+                DrawerLabelItem:
+                    icon:"send"
+                    text:"Log-out"
+                    on_press:root.manager.current='signup'
+
+
+
+
+
+

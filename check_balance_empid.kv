@@ -1,0 +1,36 @@
+MDScreen:
+    name:"check_balance_form"
+    MDFloatLayout:
+        BoxLayout:
+            size_hint: (1, 1)
+            padding: 10
+            ScrollView:
+                bar_color: [0, 0, 255, 1]
+                bar_width: 2
+                BoxLayout:
+                    spacing: 15
+                    id: container
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        size_hint: (1, None)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.9}
+                        color: rgba(0, 0, 200, 255)
+                        markup: True
+                        text: "[size=25]Enter your Employee ID[/size]"
+                    MDTextField:
+                        id: Emp_id
+                        markup: True
+                        hint_text: "Employee ID"
+                        mode: "round"
+                        size_hint: (1, None)
+                        height: 300
+
+    MDTextButton:
+        text: "Show my Leave Balance"
+        color: rgba(0, 0, 200, 255)
+        font_size: "18sp"
+        pos_hint: {"center_x": 0.45, "center_y": 0.6}
+        on_press:
+            app.employee_check_balance(Emp_id)
